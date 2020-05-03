@@ -1,0 +1,43 @@
+{%extends 'main.html'%}
+{%block content%}
+<div class ='rol'>
+    <div class='col-md  '>
+        <div class = 'card card-body'>
+
+            <form action="" method="POST">
+                {% csrf_token%}
+                {{form.username.label}}
+                {{form.username}}
+                
+                {{form.email.label}}
+                {{form.email}}
+                
+                {{form.password1.label}}
+                {{form.password1}}
+
+                {{form.password2.label}}
+                {{form.password2}}
+
+        
+
+                <input class = 'btn btn-sm btn-primary' type="submit" name="submit">
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='Username..';
+    form_fields[2].placeholder='Email..';
+    form_fields[3].placeholder='Enter password...';
+    form_fields[4].placeholder='Re-enter Password...';
+
+
+    for (var field in form_fields){	
+        form_fields[field].className += ' form-control'
+    }
+</script>
+{%endblock%}

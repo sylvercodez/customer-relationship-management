@@ -1,0 +1,32 @@
+{%extends 'main.html' %}
+{% load static%}
+
+{%block content%}
+
+<div class ='rol'>
+    <div class='col-md-6  '>
+        <div class = 'card card-body'>
+
+            <form action="" method="POST">
+                {% csrf_token%}
+            
+                    
+                {{ formSet.management_form }}
+
+                {%for form in formSet%}
+
+                    {{form}}
+                    <hr>
+
+                {%endfor%}
+
+                <input class = 'btn btn-sm btn-primary' type="submit" name="submit">
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{%endblock%}

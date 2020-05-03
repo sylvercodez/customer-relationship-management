@@ -1,0 +1,31 @@
+{% extends 'main.html'%}
+{%load static%}
+{% block content%}
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+            <div class="d-flex justify-content-center form_container">
+                <div class="row">
+                <div class="col-md">
+                    <div class="card card-body">
+                        <p>Are you sure you want to delete {{item}}</p>
+                        <form action="{% url 'deleteform' item.id%}" method="POST">
+                            {% csrf_token %}
+
+                            <a class= "btn btn-warning" href="{% url 'index' %}">cancel</a>
+
+                            <input class="btn btn-danger" type="submit" name="Confirm">
+
+
+
+                        </form>
+                    </div>
+                </div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

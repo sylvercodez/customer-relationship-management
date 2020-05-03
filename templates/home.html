@@ -1,0 +1,70 @@
+{%extends 'main.html' %}
+{% load static %}
+
+{%block content%}    
+{%include 'status.html'%}
+
+<br>
+<div class="row">
+    <div class="col-md-5">
+
+        <h5>CUSTOMERS:</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'customerform' %}">Create Customers
+            </a>
+            <table class="table table-sm">
+                <tr>
+                    <th></th>
+                    <th>Customer</th>
+                    <th>phone</th> 
+                </tr>
+
+                {%for customers in customers%}
+                    <tr>
+                        <td><a class="btn btn-sm btn-info"href="{%url 'customers' customers.id%}">view</a></td>
+                        <td>{{customers.Name}}</td>
+                        <td>{{customers.phone}}</td>
+                    </tr>
+
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+
+        <h5>LAST 5 ORDERS</h5>
+        <hr>
+        <div class="card card-body">
+            
+            
+            <table class="table table-sm">
+                <tr>
+                    
+                    <th>product</th>
+                    <th>Date Ordered</th>
+                    <th>status</th>
+                    
+                    <th>remove</th>
+                    
+                </tr>
+
+                {%for orders in orders%}
+                    <tr>
+                        <td>{{orders.product}}</td>
+                        <td>{{orders.date_created}}</td>
+                        <td>{{orders.status}}</td>
+                        <td><a class="btn btn-sm btn-danger" href="{%url 'deleteform' orders.id%}">delete</a></td>
+                    </tr>
+
+
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+{%endblock%}
